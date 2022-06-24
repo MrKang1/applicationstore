@@ -5,12 +5,22 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
+    ElCol: typeof import('element-plus/es')['ElCol']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDrawer: typeof import('element-plus/es')['ElDrawer']
+    ElHeader: typeof import('element-plus/es')['ElHeader']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElMain: typeof import('element-plus/es')['ElMain']
+    ElRow: typeof import('element-plus/es')['ElRow']
     IEpAddLocation: typeof import('~icons/ep/add-location')['default']
     IEpSetting: typeof import('~icons/ep/setting')['default']
+    Mode01: typeof import('./src/components/common-icon/mode01.vue')['default']
+    Mode02: typeof import('./src/components/common-icon/mode02.vue')['default']
+    Model02: typeof import('./src/components/common-icon/model02.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SystemFixed: typeof import('./src/components/system-fixed/index.vue')['default']

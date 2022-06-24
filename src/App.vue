@@ -1,7 +1,6 @@
 <template>
     <el-config-provider :locale="zhCn">
-        <el-card>111</el-card>
-        <el-button type="primary">hello</el-button>
+        <router-view />
     </el-config-provider>
     <layout-tool />
 </template>

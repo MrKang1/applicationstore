@@ -1,56 +1,51 @@
 import { App } from 'vue'
-import Color from '@/utils/color'
-import { ColorElementType } from '@/types/system'
-
+import layoutConfig from './layout.config'
+import { SystemStore } from '@/stores/system'
+// 这个类比较关键 不能有篡改，所以暴露的方法全部添加防篡改
 export class Layout {
-    private storage_key = 'THEME_CONTENT'
-    private color : ColorElementType[] = Color
-    public status = true
-    private rootStyle = window.document.documentElement.style
-    constructor (private app: App) {
-        if (this.status) {
-            this.setTheme(this.getTheme())
+    private storage_key = 'SYSLAYOUT'
+    private config = layoutConfig
+    private $store = SystemStore()
+    constructor () {
+        this.setLayout(this.getLayout())
+    }
+
+    getLayout (): string {
+        const type = localStorage.getItem(this.storage_key)
+        const exist = this.config.find(item => item.key === type)
+        if (!type || !exist) { // 如果你是乱输得
+            return this.config[0].key
+        }
+        if (this.$store.getLayout !== type) {
+            this.$store.$patch({
+                layout: type
+            })
+        }
+        return type
+    }
+
+    setLayout (name: string) {
+        name = name ? name.trim() : ''
+        const exist = this.config.find(item => item.key === name)
+        if (!exist) { // 如果你是乱输得
+            name = this.config[0].key
+        }
+        localStorage.setItem(this.storage_key, name)
+        if (this.$store.getLayout !== name) {
+            this.$store.$patch({
+                layout: name
+            })
         }
     }
 
-    getTheme () : string { // 返回当前是什么主题
-        let key: string | null = localStorage.getItem(this.storage_key)
-        if (!key || !this.color.find(color => color.key === key)) {
-            key = this.color[0].key
-        }
-        return key
-    }
-
-    setTheme (themeName: string) {
-        // 检测传入的值是否存在
-        if (!this.color.find(color => color.key === themeName)) {
-            return
-        }
-        if (localStorage.getItem(this.storage_key) !== themeName) {
-            localStorage.setItem(this.storage_key, themeName)
-        }
-        this.applyTheme()
-    }
-
-    // 应用主题
-    private applyTheme () {
-        if (!this.status) {
-            return
-        }
-        const key: string = this.getTheme()
-        const color = this.color.find(color => color.key === key)
-        if (!color) {
-            return
-        }
-        for (const ele in color.colors) {
-            this.rootStyle.setProperty(ele, color.colors[ele])
-        }
+    getLayoutList () {
+        return this.config
     }
 }
 
 export default {
     install (app:App<Element>) {
-        const layout = new Layout(app)
-        app.config.globalProperties.$layout = layout
+        const $layout = new Layout()
+        app.config.globalProperties.$layout = $layout
     }
 }

@@ -5,7 +5,9 @@ import 'element-plus/es/components/message-box/style/css' // message-box 这个�
 import { createPinia } from 'pinia'
 import { createPersistedState } from 'pinia-persistedstate-plugin'
 import filter from '@/utils/filters'
+import theme from '@/utils/theme'
 import layout from '@/utils/layout'
+import router from '@/router/index'
 
 const store = createPinia()
 store.use(createPersistedState({
@@ -16,5 +18,7 @@ store.use(createPersistedState({
 const app = createApp(App)
 app.use(store)
 app.use(filter)
+app.use(theme)
 app.use(layout)
+app.use(router)
 app.mount('#app')
