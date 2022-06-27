@@ -1,3 +1,21 @@
+/* 这些字体都是强哥购买过的字体请放心使用，无版权问题 */
+@font-face {
+	font-family: font01;
+	src: url(/fonts/font01.ttf);
+}
+@font-face {
+	font-family: font02;
+	src: url(/fonts/font02.ttf);
+}
+@font-face {
+	font-family: font03;
+	src: url(/fonts/font03.ttf);
+}
+@font-face {
+	font-family: font04;
+	src: url(/fonts/font04.ttf);
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -28,6 +46,7 @@ html, body{
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+	background: var(--el-bg-color-page);
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -82,4 +101,7 @@ table {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
 	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
     background-color: #d5d5d5;
+}
+.drawer-menu .el-drawer__body{
+	padding: 0;
 }
