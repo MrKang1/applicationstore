@@ -132,7 +132,7 @@ const toOpenMenu = () => {
     }
 }
 .header-wrapper {
-    background-image: linear-gradient(to right , var(--el-color-primary) 300px, #ff6);
+    background-image: linear-gradient(to right , var(--el-color-primary) 300px, var(--el-slider-bg-color));
     height: 100%;
     width: 100%;
     display: flex;

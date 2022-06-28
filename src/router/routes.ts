@@ -17,5 +17,10 @@ export default [{
 }, {
     path: '/',
     name: 'home',
-    component: () => import('@/views/layout.vue')
+    redirect: '/example',
+    component: () => import('@/views/layout.vue'),
+    children: [{
+        path: '/example',
+        component: () => import('@/views/example/index.vue')
+    }]
 }]

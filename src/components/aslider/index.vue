@@ -59,7 +59,7 @@ const barStatus = computed(() => {
 .aslider-contaienr{
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to bottom , var(--el-color-primary) 300px, #ff6);
+    background-image: linear-gradient(to bottom , var(--el-color-primary) 300px, var(--el-slider-bg-color));
     :deep(.el-menu){
         border-right: none;
         .el-menu-item{

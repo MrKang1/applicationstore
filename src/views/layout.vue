@@ -7,7 +7,9 @@
             <el-aside class="aslider-wrapper" v-if="layout != 'ADMIN_MAIN'" :style="barStatus === AsliderBarStatus.CLOSE ? {width: '65px'} : {}">
                 <aslider-bar/>
             </el-aside>
-            <el-main class="sub-layer" :class="{'main-width': layout == 'ADMIN_MAIN'}">Main</el-main>
+            <el-main class="sub-layer" :class="{'main-width': layout == 'ADMIN_MAIN'}">
+                <router-view />
+            </el-main>
         </el-container>
     </el-container>
 </template>
@@ -65,7 +67,8 @@ const barStatus = computed(() => {
     .sub-layer{
         flex: 1;
         height: 100%;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
         box-shadow: inset var(--el-box-shadow-light);
     }
     .main-width{
